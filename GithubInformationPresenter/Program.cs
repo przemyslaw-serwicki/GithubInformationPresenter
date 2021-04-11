@@ -21,13 +21,19 @@ namespace GithubInformationPresenter
 
             if (!commitsResponse.IsSuccess)
             {
-                Console.WriteLine("Error occurred when requesting github api");
-                Console.WriteLine(commitsResponse.ErrorMessage);
+                string errorMessage = string.IsNullOrEmpty(commitsResponse.ErrorMessage)
+                    ? "Error occurred when calling github service"
+                    : commitsResponse.ErrorMessage;
+                Console.WriteLine(errorMessage);
             }
             else
             {
+                //use collection of IDataWriter[]
                 IDataWriter writer = new ConsoleWriter();
                 writer.WriteCommits(owner, repository, commitsResponse.Data);
+
+                var sqlWriter = new DatabaseWriter();
+                sqlWriter.WriteCommits(owner, repository, commitsResponse.Data);
             }
         }
     }
