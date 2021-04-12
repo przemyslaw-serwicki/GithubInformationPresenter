@@ -17,10 +17,10 @@ namespace GithubInformationPresenter
                 return 1;
             }
 
-            string owner = "przemyslaw-serwicki"; //will be as input
-            string repository = "GithubInformationPresenter"; //will be as input
-            //string owner = args[0];
-            //string repository = args[1];
+            //string owner = "przemyslaw-serwicki"; //will be as input
+            //string repository = "GithubInformationPresenter"; //will be as input
+            string owner = args[0];
+            string repository = args[1];
 
             IHttpClientProvider httpClientProvider = new GithubClientProvider();
             HttpClient httpClient = httpClientProvider.GetClient();
@@ -44,7 +44,7 @@ namespace GithubInformationPresenter
                 }
             }
 
-            Console.WriteLine("Program has finished its execution successfully");
+            Console.WriteLine("Program has finished its execution.");
             return 0;
         }
     }
