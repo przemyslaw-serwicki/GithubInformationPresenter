@@ -17,16 +17,16 @@ namespace GithubInformationPresenter
                 return 1;
             }
 
-            //string owner = "przemyslaw-serwicki"; //will be as input
-            //string repository = "GithubInformationPresenter"; //will be as input
-            string owner = args[0];
-            string repository = args[1];
+            string owner = "przemyslaw-serwicki"; //will be as input
+            string repository = "GithubInformationPresenter"; //will be as input
+            //string owner = args[0];
+            //string repository = args[1];
 
             IHttpClientProvider httpClientProvider = new GithubClientProvider();
             HttpClient httpClient = httpClientProvider.GetClient();
 
             IGithubService githubService = new GithubService(httpClient);
-            GithubResponse<CommitModel[]> commitsResponse = await githubService.GetCommitsAsync(owner, repository);
+            GithubResponse<GithubCommit[]> commitsResponse = await githubService.GetCommitsAsync(owner, repository);
 
             if (!commitsResponse.IsSuccess)
             {
@@ -42,14 +42,9 @@ namespace GithubInformationPresenter
                 {
                     writer.WriteCommits(owner, repository, commitsResponse.Data);
                 }
-
-                //IDataWriter writer = new ConsoleWriter();
-                //writer.WriteCommits(owner, repository, commitsResponse.Data);
-
-                //var sqlWriter = new DatabaseWriter();
-                //sqlWriter.WriteCommits(owner, repository, commitsResponse.Data);
             }
 
+            Console.WriteLine("Program has finished its execution successfully");
             return 0;
         }
     }

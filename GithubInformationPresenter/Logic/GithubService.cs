@@ -7,7 +7,7 @@ namespace GithubInformationPresenter.Logic
 {
     public interface IGithubService
     {
-        Task<GithubResponse<CommitModel[]>> GetCommitsAsync(string owner, string repository);
+        Task<GithubResponse<GithubCommit[]>> GetCommitsAsync(string owner, string repository);
     }
 
     public class GithubService : IGithubService
@@ -19,19 +19,19 @@ namespace GithubInformationPresenter.Logic
             _httpClient = httpClient;
         }
 
-        public async Task<GithubResponse<CommitModel[]>> GetCommitsAsync(string owner, string repository)
+        public async Task<GithubResponse<GithubCommit[]>> GetCommitsAsync(string owner, string repository)
         {
             HttpResponseMessage response = await _httpClient.GetAsync($"/repos/{owner}/{repository}/commits");
 
             if (!response.IsSuccessStatusCode)
             {
-                return GithubResponse<CommitModel[]>.Error($"Error occurred when getting data from github api: {response.ReasonPhrase}");
+                return GithubResponse<GithubCommit[]>.Error($"Error occurred when getting data from github api: {response.ReasonPhrase}");
             }
 
             var json = await response.Content.ReadAsStringAsync();
-            var mappedCommits = JsonConvert.DeserializeObject<CommitModel[]>(json);
+            var mappedCommits = JsonConvert.DeserializeObject<GithubCommit[]>(json);
 
-            return GithubResponse<CommitModel[]>.Success(mappedCommits);
+            return GithubResponse<GithubCommit[]>.Success(mappedCommits);
         }
     }
 }

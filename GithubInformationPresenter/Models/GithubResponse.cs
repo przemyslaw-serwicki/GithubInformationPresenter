@@ -11,7 +11,7 @@
 
         public T Data { get; }
 
-        public GithubResponse(bool isSuccess, string errorMessage = "", T data = default(T))
+        private GithubResponse(bool isSuccess, string errorMessage = "", T data = default(T))
         {
             this.IsSuccess = isSuccess;
             this.ErrorMessage = errorMessage;

@@ -1,9 +1,9 @@
 ﻿namespace GithubInformationPresenter.Models
 {
-    public class CommitModel
+    public class GithubCommit
     {
         public string Sha { get; set; }
 
-        public SingleCommit Commit { get; set; }
+        public GithubCommitDetails Commit { get; set; }
     }
 }

@@ -8,6 +8,8 @@ namespace GithubInformationPresenter.DataAccess.Repositories
     {
         private readonly ILiteDatabase _db;
 
+        private bool _disposed;
+
         protected abstract string TableName { get; }
 
         protected ILiteCollection<T> Collection { get; }
@@ -45,6 +47,11 @@ namespace GithubInformationPresenter.DataAccess.Repositories
 
         protected virtual void Dispose(bool disposing)
         {
+            if (_disposed)
+            {
+                return;
+            }
+
             if (disposing)
             {
                 if (_db != null)
@@ -52,6 +59,8 @@ namespace GithubInformationPresenter.DataAccess.Repositories
                     _db.Dispose();
                 }
             }
+
+            _disposed = true;
         }
     }
 }

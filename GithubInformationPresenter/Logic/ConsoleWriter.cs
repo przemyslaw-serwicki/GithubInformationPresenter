@@ -5,22 +5,20 @@ namespace GithubInformationPresenter.Logic
 {
     public class ConsoleWriter : IDataWriter
     {
-        public bool WriteCommits(string owner, string repository, CommitModel[] commits)
+        public void WriteCommits(string owner, string repository, GithubCommit[] commits)
         {
             if (commits == null || commits.Length == 0)
             {
                 Console.WriteLine($"No commits have been found in repository: {repository}, owned by: {owner}");
-                return true;
+                return;
             }
 
             Console.WriteLine("List of found commits:\n");
-            foreach(var commitModel in commits)
+            foreach(var commit in commits)
             {
-                SingleCommit singleCommit = commitModel.Commit;
-                Console.WriteLine($"[{repository}]/[{commitModel.Sha}]: {singleCommit.Message} [{singleCommit.Committer}]\n");
+                GithubCommitDetails singleCommit = commit.Commit;
+                Console.WriteLine($"[{repository}]/[{commit.Sha}]: {singleCommit.Message} [{singleCommit.Committer}]\n");
             }
-
-            return true;
         }
     }
 }

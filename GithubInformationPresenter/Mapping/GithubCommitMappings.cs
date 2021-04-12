@@ -4,26 +4,26 @@ using System;
 
 namespace GithubInformationPresenter.Mapping
 {
-    public static class CommitModelMappings
+    public static class GithubCommitMappings
     {
-        public static Commit ToCommitEntity(this CommitModel commitModel, string username, string repository)
+        public static Commit ToCommitEntity(this GithubCommit githubCommit, string username, string repository)
         {
-            if (commitModel == null)
+            if (githubCommit == null)
             {
-                throw new ArgumentNullException(nameof(commitModel));
+                throw new ArgumentNullException(nameof(githubCommit));
             }
 
             return new Commit
             {
                 UserName = username,
                 Repository = repository,
-                Sha = commitModel.Sha,
-                Message = commitModel.Commit?.Message,
-                Committer = commitModel.Commit?.Committer.ToCommitAuthor()
+                Sha = githubCommit.Sha,
+                Message = githubCommit.Commit?.Message,
+                Committer = githubCommit.Commit?.Committer.ToCommitAuthor()
             };
         }
 
-        private static Commit.CommitAuthor ToCommitAuthor(this Committer committer)
+        private static Commit.CommitAuthor ToCommitAuthor(this GithubCommitter committer)
         {
             if (committer == null)
             {

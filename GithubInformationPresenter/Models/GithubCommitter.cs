@@ -2,7 +2,7 @@
 
 namespace GithubInformationPresenter.Models
 {
-    public class Committer
+    public class GithubCommitter
     {
         public string Name { get; set; }
 
@@ -12,7 +12,7 @@ namespace GithubInformationPresenter.Models
 
         public override string ToString()
         {
-            return $"{nameof(Committer)} - {nameof(Name)}: {Name}, {nameof(Email)}: {Email}, {nameof(Date)}: {Date}";
+            return $"{nameof(GithubCommitter)} - {nameof(Name)}: {Name}, {nameof(Email)}: {Email}, {nameof(Date)}: {Date}";
         }
     }
 }

@@ -1,9 +1,9 @@
 ﻿namespace GithubInformationPresenter.Models
 {
-    public class SingleCommit
+    public class GithubCommitDetails
     {
         public string Message { get; set; }
 
-        public Committer Committer { get; set; }
+        public GithubCommitter Committer { get; set; }
     }
 }

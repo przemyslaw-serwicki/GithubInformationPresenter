@@ -4,6 +4,6 @@ namespace GithubInformationPresenter.Logic
 {
     public interface IDataWriter
     {
-        bool WriteCommits(string owner, string repository, CommitModel[] commits);
+        void WriteCommits(string owner, string repository, GithubCommit[] commits);
     }
 }

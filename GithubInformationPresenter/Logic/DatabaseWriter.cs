@@ -8,7 +8,7 @@ namespace GithubInformationPresenter.Logic
 {
     public class DatabaseWriter : IDataWriter
     {
-        public bool WriteCommits(string owner, string repository, CommitModel[] commits)
+        public void WriteCommits(string owner, string repository, GithubCommit[] commits)
         {
             using ICommitsRepository commitsRepository = new CommitsRepository(this.GetLiteDatabase());
             foreach (var commit in commits)
@@ -16,8 +16,6 @@ namespace GithubInformationPresenter.Logic
                 var commitEntity = commit.ToCommitEntity(owner, repository);
                 commitsRepository.InsertIfUnique(commitEntity);
             }
-
-            return true;
         }
 
         //TODO: If we decide to install IoC container like Autofac, we can setup resolve of LiteDatabase
