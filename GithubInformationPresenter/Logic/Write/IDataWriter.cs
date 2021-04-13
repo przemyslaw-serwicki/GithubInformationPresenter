@@ -1,6 +1,6 @@
 ﻿using GithubInformationPresenter.Models;
 
-namespace GithubInformationPresenter.Logic
+namespace GithubInformationPresenter.Logic.Write
 {
     public interface IDataWriter
     {

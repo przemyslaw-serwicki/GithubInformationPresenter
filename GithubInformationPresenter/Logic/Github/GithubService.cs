@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace GithubInformationPresenter.Logic
+namespace GithubInformationPresenter.Logic.Github
 {
     public interface IGithubService
     {

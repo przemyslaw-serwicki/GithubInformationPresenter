@@ -1,0 +1,1 @@
+Here you can find some comments from myself regarding implementation

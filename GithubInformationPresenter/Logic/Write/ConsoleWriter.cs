@@ -1,7 +1,7 @@
 ﻿using GithubInformationPresenter.Models;
 using System;
 
-namespace GithubInformationPresenter.Logic
+namespace GithubInformationPresenter.Logic.Write
 {
     public class ConsoleWriter : IDataWriter
     {
@@ -14,7 +14,7 @@ namespace GithubInformationPresenter.Logic
             }
 
             Console.WriteLine("List of found commits:\n");
-            foreach(var commit in commits)
+            foreach (var commit in commits)
             {
                 GithubCommitDetails singleCommit = commit.Commit;
                 Console.WriteLine($"[{repository}]/[{commit.Sha}]: {singleCommit.Message} [{singleCommit.Committer}]\n");

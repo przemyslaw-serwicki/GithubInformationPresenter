@@ -1,4 +1,5 @@
-﻿using GithubInformationPresenter.Logic;
+﻿using GithubInformationPresenter.Logic.Github;
+using GithubInformationPresenter.Logic.Write;
 using GithubInformationPresenter.Models;
 using System;
 using System.Collections.Generic;
@@ -17,8 +18,6 @@ namespace GithubInformationPresenter
                 return 1;
             }
 
-            //string owner = "przemyslaw-serwicki"; //will be as input
-            //string repository = "GithubInformationPresenter"; //will be as input
             string owner = args[0];
             string repository = args[1];
 

@@ -4,13 +4,13 @@ using System.Configuration;
 using GithubInformationPresenter.Mapping;
 using GithubInformationPresenter.DataAccess.Repositories;
 
-namespace GithubInformationPresenter.Logic
+namespace GithubInformationPresenter.Logic.Write
 {
     public class DatabaseWriter : IDataWriter
     {
         public void WriteCommits(string owner, string repository, GithubCommit[] commits)
         {
-            using ICommitsRepository commitsRepository = new CommitsRepository(this.GetLiteDatabase());
+            using ICommitsRepository commitsRepository = new CommitsRepository(GetLiteDatabase());
             foreach (var commit in commits)
             {
                 var commitEntity = commit.ToCommitEntity(owner, repository);

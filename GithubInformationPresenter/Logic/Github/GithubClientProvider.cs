@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 
-namespace GithubInformationPresenter.Logic
+namespace GithubInformationPresenter.Logic.Github
 {
     public interface IHttpClientProvider
     {
